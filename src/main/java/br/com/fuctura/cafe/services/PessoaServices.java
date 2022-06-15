@@ -90,6 +90,9 @@ public class PessoaServices {
 			throw new PessoaNotExistsException("Colaborador não cadastrado!");
 		}
 		
+		// remove as comidas		
+		this.comidaService.deleteByPessoa(objPessoa.get());
+		
 		// remover pessoa
 		this.pessoaRepositorio.delete(cpf);
 	}

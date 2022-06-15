@@ -46,5 +46,13 @@ public class ComidaServices {
 	public void delete(long id) {
 		this.repository.delete(id, this.entityManager);
 	}
+	
+	public void deleteByPessoa(Pessoa pessoa) {
+		if (null != pessoa.getComidas()) {
+			for(Comida comida : pessoa.getComidas()) {
+				this.delete(comida.getId());
+			}
+		}			
+	}
 
 }
