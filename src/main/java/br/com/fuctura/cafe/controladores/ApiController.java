@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
+import br.com.fuctura.cafe.config.SwaggerConfig;
 import br.com.fuctura.cafe.entidades.dtos.MensagemDto;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import springfox.documentation.annotations.ApiIgnore;
 
+@Api(tags = {SwaggerConfig.API_TAG})
 @RestController
 @RequestMapping("/")
 public class ApiController {

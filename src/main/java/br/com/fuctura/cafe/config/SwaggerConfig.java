@@ -11,6 +11,7 @@ import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Tag;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -18,6 +19,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig extends WebMvcConfigurationSupport {
+	
+	public static final String API_TAG = "api";
+	public static final String PESSOA_TAG = "pessoa";
+	
 	@Bean
     public Docket api() { 
         return new Docket(DocumentationType.SWAGGER_2)  
@@ -27,7 +32,9 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
           .paths(PathSelectors.any())
           .paths(Predicates.not(PathSelectors.regex("/error.*")))
           .build()                                       
-          .useDefaultResponseMessages(false);
+          .useDefaultResponseMessages(false)
+          .tags(new Tag(API_TAG, "Api de serviços do recurso raiz"),
+          		new Tag(PESSOA_TAG, "Api de serviços do recurso pessoa"));
     }
 	
     private ApiInfo getApiInfo() {
@@ -36,7 +43,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 .title("Api do Serviço REST do sistema Café")
                 .description("Especificação de uso da api do cafe")
                 .version("1.0.0")
-                .build();
+                .build();                
     }
 		
 	@Override

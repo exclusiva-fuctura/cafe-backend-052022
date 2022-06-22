@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fuctura.cafe.config.SwaggerConfig;
 import br.com.fuctura.cafe.entidades.Comida;
 import br.com.fuctura.cafe.entidades.Pessoa;
 import br.com.fuctura.cafe.entidades.dtos.PessoaDto;
@@ -27,8 +28,10 @@ import br.com.fuctura.cafe.services.PessoaServices;
 import br.com.fuctura.cafe.services.exceptions.ComidaExistsException;
 import br.com.fuctura.cafe.services.exceptions.PessoaExistsException;
 import br.com.fuctura.cafe.services.exceptions.PessoaNotExistsException;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
+@Api(tags = {SwaggerConfig.PESSOA_TAG})
 @RestController
 @RequestMapping("/api")
 public class PessoaController {
