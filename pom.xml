@@ -14,7 +14,7 @@
 	<name>cafe</name>
 	<description>Sistema de gestão de café da manhã</description>
 	<properties>
-		<java.version>16</java.version>
+		<java.version>11</java.version>
 		<!--  <maven.compiler.release>11</maven.compiler.release>  -->
 	</properties>
 	<dependencies>
@@ -82,6 +82,22 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!-- para o Heroku -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+		                		<id>copy-dependencies</id>
+			                	<phase>package</phase>
+			                	<goals><goal>copy-dependencies</goal></goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
